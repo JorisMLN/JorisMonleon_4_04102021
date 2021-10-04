@@ -6,6 +6,7 @@ const formData = document.querySelectorAll(".formData");
 
 //------------------------
 
+// fonction principale
 main();
 
 function main(){
@@ -18,8 +19,6 @@ function postRegistration(){
   btnRegistration.addEventListener('click', function (event) {
     event.preventDefault();
 
-    //let infos = keepInfos();
-
     let objetContact = {
       firstName: document.getElementById('first').value,
       lastName: document.getElementById('last').value,
@@ -31,26 +30,14 @@ function postRegistration(){
 
     if(validateEmail(objetContact.email) == false){
       alert('Verifier adresse email');
-      return;
+    } else {
+      (objetContact.firstName &&
+      objetContact.lastName &&
+      objetContact.email &&
+      objetContact.birthday &&
+      objetContact.quantity) ? alert('Ready to fight !') : alert('Veuillez remplir le formulaire')
     }
-
-    if(objetContact){
-      alert('Ready to fight !')
-    }
-
   })
-};
-
-// Take info from the form
-function keepInfos(){
-  let objetContact = {
-    firstName: document.getElementById('first').value,
-    lastName: document.getElementById('last').value,
-    email: document.getElementById('email').value,
-    birthday: document.getElementById('birthdate').value,
-    quantity: document.getElementById('quantity').value
-  }
-  console.log(objetContact);
 };
 
 //Regex of email validation
