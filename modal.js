@@ -73,7 +73,7 @@ function launchModal() {
 
 //close modal event
 let btnCloseModal = document.getElementsByClassName("close");
-btnCloseModal.addEventListener("click", closeModal());
+btnCloseModal.addEventListener("click", closeModal);
 
 //close modal form
 function closeModal(){
