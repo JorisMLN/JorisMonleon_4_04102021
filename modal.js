@@ -13,7 +13,7 @@ function main(){
   postRegistration();
 }
 
-// 
+//Récuperation des elements
 function postRegistration(){
   let btnRegistration = document.getElementById('registration');
   btnRegistration.addEventListener('click', function (event) {
@@ -47,8 +47,6 @@ function validateEmail(email) {
 };
 
 
-
-
 //------------------------
 
 //Popup
@@ -61,11 +59,24 @@ function editNav() {
   }
 };
 
+//------------------------
+//button manager
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
+  console.log('testOpen');
   modalbg.style.display = "block";
 };
 
+//close modal event
+let btnCloseModal = document.getElementsByClassName("close");
+btnCloseModal.addEventListener("click", closeModal());
+
+//close modal form
+function closeModal(){
+  console.log('testClose');
+  modalbg.removeAttribute("style");
+}
