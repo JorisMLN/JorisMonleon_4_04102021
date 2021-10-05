@@ -9,12 +9,12 @@ const formData = document.querySelectorAll(".formData");
 // fonction principale
 main();
 
-function main(){
+function main() {
   postRegistration();
 }
 
 //Récuperation des elements
-function postRegistration(){
+function postRegistration() {
   let btnRegistration = document.getElementById('registration');
   btnRegistration.addEventListener('click', function (event) {
     event.preventDefault();
@@ -28,15 +28,35 @@ function postRegistration(){
     }
     console.log(objetContact);
 
-    if(validateEmail(objetContact.email) == false){
-      alert('Verifier adresse email');
-    } else {
-      (objetContact.firstName &&
+    if(objetContact.firstName &&
       objetContact.lastName &&
       objetContact.email &&
       objetContact.birthday &&
-      objetContact.quantity) ? alert('Ready to fight !') : alert('Veuillez remplir le formulaire')
+      objetContact.quantity){
+        console.log('ok formulaire')
+    } else {
+      console.log('Veuillez remplir le formulaire')
     }
+
+    if(objetContact.firstName.length && objetContact.lastName.length >= 2) {
+      console.log('ok name length')
+    } else {
+      console.log('Nom et prenom doivent avoir 2 lettres minimum :)')
+    }
+
+    if (validateEmail(objetContact.email) == true) {
+      console.log('ok email');
+    } else {
+      console.log('Verifier adresse email');
+    }
+
+    if(typeof(objetContact.quantity) == Number){
+      console.log('ok type quantity')
+    } else {
+      console.log('quantity doit etre un nombre !')
+    }
+
+
   })
 };
 
@@ -49,7 +69,7 @@ function validateEmail(email) {
 
 //------------------------
 
-//Popup
+//Responsiv button
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -76,7 +96,7 @@ let btnCloseModal = document.getElementsByClassName("close");
 btnCloseModal.addEventListener("click", closeModal);
 
 //close modal form
-function closeModal(){
+function closeModal() {
   console.log('testClose');
   modalbg.removeAttribute("style");
 }
