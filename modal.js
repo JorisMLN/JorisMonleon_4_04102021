@@ -1,11 +1,9 @@
 // DOM Elements
-const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
 
 //------------------------
-
 // fonction principale
 main();
 
@@ -28,17 +26,17 @@ function postRegistration() {
     }
     console.log(objetContact);
 
-    if(objetContact.firstName &&
+    if (objetContact.firstName &&
       objetContact.lastName &&
       objetContact.email &&
       objetContact.birthday &&
-      objetContact.quantity){
-        console.log('ok formulaire')
+      objetContact.quantity) {
+      console.log('ok formulaire')
     } else {
       console.log('Veuillez remplir le formulaire')
     }
 
-    if(objetContact.firstName.length && objetContact.lastName.length >= 2) {
+    if (objetContact.firstName.length && objetContact.lastName.length >= 2) {
       console.log('ok name length')
     } else {
       console.log('Nom et prenom doivent avoir 2 lettres minimum :)')
@@ -50,7 +48,7 @@ function postRegistration() {
       console.log('Verifier adresse email');
     }
 
-    if(typeof(objetContact.quantity) == Number){
+    if (typeof (objetContact.quantity) == Number) {
       console.log('ok type quantity')
     } else {
       console.log('quantity doit etre un nombre !')
@@ -68,7 +66,6 @@ function validateEmail(email) {
 
 
 //------------------------
-
 //Responsiv button
 function editNav() {
   var x = document.getElementById("myTopnav");
@@ -81,22 +78,27 @@ function editNav() {
 
 //------------------------
 //button manager
+const modalbg = document.querySelector(".bground");
 
 // launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
 
-// launch modal form
+// launch modal function
 function launchModal() {
   console.log('testOpen');
-  modalbg.style.display = "block";
+  modalbg.style.display = 'block';
+
+  // let btnCloseModal = document.getElementById('close');
+  // btnCloseModal.addEventListener('click', closeModal);
 };
 
-//close modal event
-let btnCloseModal = document.getElementsByClassName("close");
-btnCloseModal.addEventListener("click", closeModal);
+// close modal event
+let btnCloseModal = document.querySelector('.close');
+btnCloseModal.addEventListener('click', closeModal);
 
-//close modal form
+//close modal function
 function closeModal() {
   console.log('testClose');
-  modalbg.removeAttribute("style");
+  modalbg.style.display = 'none';
 }
+
