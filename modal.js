@@ -17,33 +17,50 @@ function postRegistration() {
   btnRegistration.addEventListener('click', function (event) {
     event.preventDefault();
 
-    // check firstName
-    let firstName = document.getElementById('first').value;
-    console.log('firstName = ' + checkName(firstName.length));
-
-    // check lastName
-    let lastName = document.getElementById('last').value;
-    console.log('lastName = ' + checkName(lastName.length));
-
-    // checkEmail
-    let email = document.getElementById('email').value;
-    console.log('email = ' + validateEmail(email));
-
-    // check birthday
-    console.log('birthday = ' + checkBirthday());
-
-    // check Quantity Number
-    console.log('quantity = ' + quantityNumber());
-
-    // call function check Radio
-    console.log('radio = ' + checkRadio());
-
-    // call function conditions
-    console.log('conditions = ' + checkConditions());
-
-    // validate();
+    validateForm();
   })
 };
+
+//------------------------
+// fonction de validation
+
+function validateForm() {
+
+  // checks
+  let firstName = document.getElementById('first').value;
+  console.log('TESTfirstName = ' + checkName(firstName.length));
+
+  let lastName = document.getElementById('last').value;
+  console.log('TESTlastName = ' + checkName(lastName.length));
+
+  let email = document.getElementById('email').value;
+  console.log('TESTemail = ' + validateEmail(email));
+
+  console.log('TESTbirthday = ' + checkBirthday());
+  console.log('TESTquantity = ' + quantityNumber());
+  console.log('TESTradio = ' + checkRadio());
+  console.log('TESTconditions = ' + checkConditions());
+
+  if (checkName(firstName.length) === false) {
+    console.log('Veuillez entrer 2 caractères ou plus pour le champ du prénom.');
+  } else if (checkName(lastName.length) === false) {
+    console.log('Veuillez entrer 2 caractères ou plus pour le champ du nom.');
+  } else if(validateEmail(email) === false){
+    console.log('adresse non valide');
+  } else if(checkBirthday() === false){
+    console.log('Vous devez entrer votre date de naissance.');
+  } else if(quantityNumber() === false){
+    console.log('Vous devez entrer un nombre');
+  } else if(checkRadio() === false){
+    console.log('Vous devez choisir une option.');
+  } else if(checkConditions() === false){
+    console.log('Vous devez vérifier que vous acceptez les termes et conditions.');
+  } else {
+    confirmed();
+  }
+};
+
+
 
 //------------------------
 // liste de check
@@ -112,6 +129,12 @@ function checkConditions() {
   }
 }
 
+// confirmation de formulaire
+function confirmed(){
+  console.log('validation réussie !')
+}
+
+
 //------------------------
 //Responsiv button
 function editNav() {
@@ -122,6 +145,7 @@ function editNav() {
     x.className = "topnav";
   }
 };
+
 
 //------------------------
 //button manager
