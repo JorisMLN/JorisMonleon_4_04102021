@@ -269,6 +269,9 @@ input[data-error]::after {
   transition: 0.3s;
   opacity: 0;
 }
+.radioButton{
+  opacity: 1;
+}
 .checkbox-input {
   display: none;
 }

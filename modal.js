@@ -25,8 +25,8 @@ function postRegistration() {
       quantity: document.getElementById('quantity').value
     }
 
-    console.log(objetContact);
-    console.log(typeof objetContact.quantity);
+    // console.log(objetContact);
+    // console.log(typeof objetContact.quantity);
 
     if (objetContact.firstName &&
       objetContact.lastName &&
@@ -39,7 +39,7 @@ function postRegistration() {
     }
 
     if(objetContact.birthday){
-      console.log('birthday ok');
+      console.log('ok birthday');
     } else {
       console.log('Vous devez entrer votre date de naissance.')
     }
@@ -68,21 +68,28 @@ function postRegistration() {
 
 function checkRadioAndConditions(){
 
-  // let radioBtn = document.querySelector('.checkbox-input');
+  // check radio button
+  let radioBtn = document.getElementsByClassName('radioButton');
+  let checkRadio = 0;
 
-  // radioBtn.forEach((btn) => {
-  //   btn.addEventListener('click', () => console.log('test radio'));
+  Array.from(radioBtn).forEach((btn) => {
+    if(btn.checked == true){
+      checkRadio += 1;
+    }
+  });
 
-  //   if(btn == true){
-  //     console.log('Radio ok');
-  //   } else {
-  //     console.log('1 radio doit etre selectionné');
-  //   }
-  // })
+  console.log(checkRadio);
 
+  if(checkRadio >= 1){
+    console.log('ok radio')
+  } else {
+    console.log('Vous devez choisir une option de Ville .')
+  }
+
+  //Check conditions
   let conditions =  document.getElementById('checkbox1');
   if(conditions.checked == true){
-    console.log('conditions ok!');
+    console.log('ok conditions');
   } else {
     console.log('Vous devez vérifier que vous acceptez les termes et conditions');
   }
