@@ -17,83 +17,45 @@ function postRegistration() {
   btnRegistration.addEventListener('click', function (event) {
     event.preventDefault();
 
-    let objetContact = {
-      firstName: document.getElementById('first').value,
-      lastName: document.getElementById('last').value,
-      email: document.getElementById('email').value,
-      birthday: document.getElementById('birthdate').value,
-      quantity: document.getElementById('quantity').value
-    }
+    // check firstName
+    let firstName = document.getElementById('first').value;
+    console.log('firstName = ' + checkName(firstName.length));
 
-    // console.log(objetContact);
-    // console.log(typeof objetContact.quantity);
+    // check lastName
+    let lastName = document.getElementById('last').value;
+    console.log('lastName = ' + checkName(lastName.length));
 
-    if (objetContact.firstName &&
-      objetContact.lastName &&
-      objetContact.email &&
-      objetContact.birthday &&
-      objetContact.quantity) {
-      console.log('ok formulaire')
-    } else {
-      console.log('Veuillez remplir le formulaire')
-    }
+    // checkEmail
+    let email = document.getElementById('email').value;
+    console.log('email = ' + validateEmail(email));
 
-    if(objetContact.birthday){
-      console.log('ok birthday');
-    } else {
-      console.log('Vous devez entrer votre date de naissance.')
-    }
+    // check birthday
+    console.log('birthday = ' + checkBirthday());
 
-    if (objetContact.firstName.length && objetContact.lastName.length >= 2) {
-      console.log('ok name length')
-    } else {
-      console.log('Nom et prenom doivent avoir 2 lettres minimum :)')
-    }
+    // check Quantity Number
+    console.log('quantity = ' + quantityNumber());
 
-    if (validateEmail(objetContact.email) == true) {
-      console.log('ok email');
-    } else {
-      console.log('Verifier adresse email');
-    }
+    // call function check Radio
+    console.log('radio = ' + checkRadio());
 
-    if (typeof objetContact.quantity === Number) {
-      console.log('ok type quantity')
-    } else {
-      console.log('quantity doit etre un nombre !')
-    }
+    // call function conditions
+    console.log('conditions = ' + checkConditions());
 
-    checkRadioAndConditions();
+    // validate();
   })
 };
 
-function checkRadioAndConditions(){
+//------------------------
+// liste de check
 
-  // check radio button
-  let radioBtn = document.getElementsByClassName('radioButton');
-  let checkRadio = 0;
-
-  Array.from(radioBtn).forEach((btn) => {
-    if(btn.checked == true){
-      checkRadio += 1;
-    }
-  });
-
-  console.log(checkRadio);
-
-  if(checkRadio >= 1){
-    console.log('ok radio')
+// check firstname and lastname
+function checkName(nameLength) {
+  if (nameLength >= 2) {
+    return true;
   } else {
-    console.log('Vous devez choisir une option de Ville .')
+    return false;
   }
-
-  //Check conditions
-  let conditions =  document.getElementById('checkbox1');
-  if(conditions.checked == true){
-    console.log('ok conditions');
-  } else {
-    console.log('Vous devez vérifier que vous acceptez les termes et conditions');
-  }
-};
+}
 
 //Regex of email validation
 function validateEmail(email) {
@@ -101,6 +63,54 @@ function validateEmail(email) {
   return re.test(String(email).toLowerCase());
 };
 
+// check birthday
+function checkBirthday() {
+  let birthday = document.getElementById('birthdate').value;
+  if (birthday) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// check Quantity Number
+function quantityNumber() {
+  let quantity = document.getElementById('quantity').value;
+
+  if (typeof quantity === Number) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// check radio button
+function checkRadio() {
+  let radioBtn = document.getElementsByClassName('radioButton');
+  let checkRadio = 0;
+
+  Array.from(radioBtn).forEach((btn) => {
+    if (btn.checked == true) {
+      checkRadio += 1;
+    }
+  });
+
+  if (checkRadio >= 1) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+//Check conditions
+function checkConditions() {
+  let conditions = document.getElementById('checkbox1');
+  if (conditions.checked == true) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 //------------------------
 //Responsiv button
