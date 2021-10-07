@@ -37,6 +37,7 @@ function validateForm() {
 
   if (checkName(firstName.length) === false) {
     console.log('Veuillez entrer 2 caractères ou plus pour le champ du prénom.');
+    // firstName.setCustomValidity('Pas bon');
   } else if (checkName(lastName.length) === false) {
     console.log('Veuillez entrer 2 caractères ou plus pour le champ du nom.');
   } else if (validateEmail(email) === false) {
