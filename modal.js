@@ -28,18 +28,16 @@ function validateForm() {
 
   // checks
   let firstName = document.getElementById('first').value;
-  console.log('TESTfirstName = ' + checkName(firstName.length));
-
   let lastName = document.getElementById('last').value;
-  console.log('TESTlastName = ' + checkName(lastName.length));
-
   let email = document.getElementById('email').value;
-  console.log('TESTemail = ' + validateEmail(email));
 
-  console.log('TESTbirthday = ' + checkBirthday());
-  console.log('TESTquantity = ' + quantityNumber());
-  console.log('TESTradio = ' + checkRadio());
-  console.log('TESTconditions = ' + checkConditions());
+  // console.log('TESTfirstName = ' + checkName(firstName.length));
+  // console.log('TESTlastName = ' + checkName(lastName.length));
+  // console.log('TESTemail = ' + validateEmail(email));
+  // console.log('TESTbirthday = ' + checkBirthday());
+  // console.log('TESTquantity = ' + quantity());
+  // console.log('TESTradio = ' + checkRadio());
+  // console.log('TESTconditions = ' + checkConditions());
 
   if (checkName(firstName.length) === false) {
     console.log('Veuillez entrer 2 caractères ou plus pour le champ du prénom.');
@@ -49,7 +47,7 @@ function validateForm() {
     console.log('adresse non valide');
   } else if(checkBirthday() === false){
     console.log('Vous devez entrer votre date de naissance.');
-  } else if(quantityNumber() === false){
+  } else if(quantity() === false){
     console.log('Vous devez entrer un nombre');
   } else if(checkRadio() === false){
     console.log('Vous devez choisir une option.');
@@ -91,13 +89,13 @@ function checkBirthday() {
 }
 
 // check Quantity Number
-function quantityNumber() {
+function quantity() {
   let quantity = document.getElementById('quantity').value;
 
-  if (typeof quantity === Number) {
-    return true;
-  } else {
+  if (quantity === "") {
     return false;
+  } else {
+    return true;
   }
 }
 
