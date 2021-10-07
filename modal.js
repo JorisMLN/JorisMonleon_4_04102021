@@ -24,6 +24,8 @@ function postRegistration() {
 function validateForm() {
   
   let firstName = document.getElementById('first').value;
+  // let firstNameDOM = document.getElementById('first');
+
   let lastName = document.getElementById('last').value;
   let email = document.getElementById('email').value;
 
@@ -36,20 +38,33 @@ function validateForm() {
   // console.log('TESTconditions = ' + checkConditions());
 
   if (checkName(firstName.length) === false) {
-    console.log('Veuillez entrer 2 caractères ou plus pour le champ du prénom.');
-    // firstName.setCustomValidity('Pas bon');
+    let errorFirstName = document.getElementById('error-first');
+    errorFirstName.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
+
   } else if (checkName(lastName.length) === false) {
-    console.log('Veuillez entrer 2 caractères ou plus pour le champ du nom.');
+    let errorLastName = document.getElementById('error-last');
+    errorLastName.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
+
   } else if (validateEmail(email) === false) {
-    console.log('adresse non valide');
+    let errorEmail = document.getElementById('error-email');
+    errorEmail.innerHTML = 'adresse électronique doit est valide';
+
   } else if (checkBirthday() === false) {
-    console.log('Vous devez entrer votre date de naissance.');
+    let errorBirth = document.getElementById('error-birth');
+    errorBirth.innerHTML = 'Vous devez entrer votre date de naissance.';
+
   } else if (quantity() === false) {
-    console.log('Vous devez entrer un nombre');
+    let errorQuantity = document.getElementById('error-quantity');
+    errorQuantity.innerHTML = 'une valeur numérique doit est saisie';
+
   } else if (checkRadio() === false) {
-    console.log('Vous devez choisir une option.');
+    let errorRadio = document.getElementById('error-radio');
+    errorRadio.innerHTML = 'Vous devez choisir une option.';
+
   } else if (checkConditions() === false) {
-    console.log('Vous devez vérifier que vous acceptez les termes et conditions.');
+    let errorConditions = document.getElementById('error-conditions');
+    errorConditions.innerHTML = 'Vous devez vérifier que vous acceptez les termes et conditions.';
+
   } else {
     confirmed();
   }
