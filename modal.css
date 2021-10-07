@@ -188,6 +188,26 @@ main {
   margin: 15px auto;
 }
 
+.validate-bloc{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  height: 550px;
+}
+
+.thanks-bloc{
+  display: flex;
+  height: 90%;
+  width: 60%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.validateBtn{
+  display: flex;
+  justify-content: flex-end;
+}
+
 label {
   font-family: var(--font-default);
   font-size: 17px;

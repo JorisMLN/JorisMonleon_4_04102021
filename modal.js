@@ -130,6 +130,12 @@ function checkConditions() {
 // confirmation de formulaire
 function confirmed(){
   console.log('validation réussie !')
+
+  const modalBody = document.querySelector('.modal-body');
+  const validateBloc = document.querySelector('.validate-bloc')
+
+  modalBody.style.display = 'none';
+  validateBloc.style.display = 'flex';
 }
 
 
@@ -168,6 +174,14 @@ btnCloseModal.addEventListener('click', closeModal);
 //close modal function
 function closeModal() {
   console.log('testClose');
+  modalbg.style.display = 'none';
+}
+
+// close validate bloc
+let validateCloseBtn = document.querySelector('.validateBtn');
+validateCloseBtn.addEventListener('click', closeValidate);
+
+function closeValidate(){
   modalbg.style.display = 'none';
 }
 
