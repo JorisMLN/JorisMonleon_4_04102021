@@ -47,7 +47,7 @@ function validateForm() {
 
   } else if (validateEmail(email) === false) {
     let errorEmail = document.getElementById('error-email');
-    errorEmail.innerHTML = 'adresse électronique doit est valide';
+    errorEmail.innerHTML = 'L`adresse électronique doit est valide';
 
   } else if (checkBirthday() === false) {
     let errorBirth = document.getElementById('error-birth');
@@ -112,20 +112,28 @@ function quantity() {
 
 // check radio button
 function checkRadio() {
+  // let radioBtn = document.getElementsByClassName('radioButton');
+
+  // let checkRadio = 0;
+  // Array.from(radioBtn).forEach((btn) => {
+  //   if (btn.checked == true) {
+  //     checkRadio += 1;
+  //   }
+  // });
+
+  // if (checkRadio >= 1) {
+  //   return true;
+  // } else {
+  //   return false;
+  // }
+
+  // --- --- --- ---
+
   let radioBtn = document.getElementsByClassName('radioButton');
-  let checkRadio = 0;
 
-  Array.from(radioBtn).forEach((btn) => {
-    if (btn.checked == true) {
-      checkRadio += 1;
-    }
-  });
-
-  if (checkRadio >= 1) {
-    return true;
-  } else {
-    return false;
-  }
+  const radioBtnChecked = Array.from(radioBtn).some(({checked}) => checked === true);
+  console.log(radioBtnChecked);
+  return radioBtnChecked;
 };
 
 //Check conditions
