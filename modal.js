@@ -51,7 +51,7 @@ function validateForm() {
     errorBirth.innerHTML = 'Vous devez entrer votre date de naissance.';
     errorEmail.innerHTML = '';
 
-  } else if (quantity() === false) {
+  } else if (checkQuantity() === false) {
     errorQuantity.innerHTML = 'une valeur numérique doit est saisie';
     errorBirth.innerHTML = '';
 
@@ -106,7 +106,7 @@ function checkBirthday() {
 }
 
 // check Quantity Number
-function quantity() {
+function checkQuantity() {
   let quantity = document.getElementById('quantity').value;
   if (quantity === "") {
     return false;
