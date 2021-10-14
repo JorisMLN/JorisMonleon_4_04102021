@@ -24,18 +24,9 @@ function postRegistration() {
 function validateForm() {
   
   let firstName = document.getElementById('first').value;
-  // let firstNameDOM = document.getElementById('first');
-
   let lastName = document.getElementById('last').value;
   let email = document.getElementById('email').value;
 
-  // console.log('TESTfirstName = ' + checkName(firstName.length));
-  // console.log('TESTlastName = ' + checkName(lastName.length));
-  // console.log('TESTemail = ' + validateEmail(email));
-  // console.log('TESTbirthday = ' + checkBirthday());
-  // console.log('TESTquantity = ' + quantity());
-  // console.log('TESTradio = ' + checkRadio());
-  // console.log('TESTconditions = ' + checkConditions());
 
   if (checkName(firstName.length) === false) {
     let errorFirstName = document.getElementById('error-first');
@@ -68,6 +59,14 @@ function validateForm() {
   } else {
     confirmed();
   }
+
+  // console.log('TESTfirstName = ' + checkName(firstName.length));
+  // console.log('TESTlastName = ' + checkName(lastName.length));
+  // console.log('TESTemail = ' + validateEmail(email));
+  // console.log('TESTbirthday = ' + checkBirthday());
+  // console.log('TESTquantity = ' + quantity());
+  // console.log('TESTradio = ' + checkRadio());
+  // console.log('TESTconditions = ' + checkConditions());
 };
 
 
@@ -112,28 +111,23 @@ function quantity() {
 
 // check radio button
 function checkRadio() {
-  // let radioBtn = document.getElementsByClassName('radioButton');
 
+  let radioBtn = document.getElementsByClassName('radioButton');
+  const radioBtnChecked = Array.from(radioBtn).some(({checked}) => checked === true);
+  return radioBtnChecked;
+
+  // let radioBtn = document.getElementsByClassName('radioButton');
   // let checkRadio = 0;
   // Array.from(radioBtn).forEach((btn) => {
   //   if (btn.checked == true) {
   //     checkRadio += 1;
   //   }
   // });
-
   // if (checkRadio >= 1) {
   //   return true;
   // } else {
   //   return false;
   // }
-
-  // --- --- --- ---
-
-  let radioBtn = document.getElementsByClassName('radioButton');
-
-  const radioBtnChecked = Array.from(radioBtn).some(({checked}) => checked === true);
-  console.log(radioBtnChecked);
-  return radioBtnChecked;
 };
 
 //Check conditions
@@ -152,7 +146,6 @@ function confirmed() {
 
   const modalBody = document.querySelector('.modal-body');
   const validateBloc = document.querySelector('.validate-bloc')
-
   modalBody.style.display = 'none';
   validateBloc.style.display = 'flex';
 }
@@ -174,7 +167,6 @@ function editNav() {
 
 function buttonManager() {
   const modalbg = document.querySelector(".bground");
-  // const formData = document.querySelectorAll(".formData");
 
   // launch modal event
   const modalBtn = document.querySelectorAll(".modal-btn");
@@ -184,9 +176,6 @@ function buttonManager() {
   function launchModal() {
     console.log('testOpen');
     modalbg.style.display = 'block';
-
-    // let btnCloseModal = document.getElementById('close');
-    // btnCloseModal.addEventListener('click', closeModal);
   };
 
   // close modal event
