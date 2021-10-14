@@ -13,7 +13,6 @@ function postRegistration() {
   let btnRegistration = document.getElementById('registration');
   btnRegistration.addEventListener('click', function (event) {
     event.preventDefault();
-
     validateForm();
   })
 };
@@ -26,6 +25,8 @@ function validateForm() {
   let firstName = document.getElementById('first').value;
   let lastName = document.getElementById('last').value;
   let email = document.getElementById('email').value;
+
+  // error span
   let errorFirstName = document.getElementById('error-first');
   let errorLastName = document.getElementById('error-last');
   let errorEmail = document.getElementById('error-email');
@@ -34,6 +35,7 @@ function validateForm() {
   let errorRadio = document.getElementById('error-radio');
   let errorConditions = document.getElementById('error-conditions');
 
+  // vérification des sorties des fonctions 'check'
   if (checkName(firstName.length) === false) {
     errorFirstName.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
 
@@ -89,8 +91,8 @@ function checkName(nameLength) {
 
 //Regex of email validation
 function validateEmail(email) {
-  let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
+  let regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return regex.test(String(email).toLowerCase());
 };
 
 // check birthday
@@ -106,7 +108,6 @@ function checkBirthday() {
 // check Quantity Number
 function quantity() {
   let quantity = document.getElementById('quantity').value;
-
   if (quantity === "") {
     return false;
   } else {
@@ -116,7 +117,6 @@ function quantity() {
 
 // check radio button
 function checkRadio() {
-
   let radioBtn = document.getElementsByClassName('radioButton');
   const radioBtnChecked = Array.from(radioBtn).some(({checked}) => checked === true);
   return radioBtnChecked;
@@ -148,7 +148,6 @@ function checkConditions() {
 // confirmation de formulaire
 function confirmed() {
   console.log('validation réussie !')
-
   const modalBody = document.querySelector('.modal-body');
   const validateBloc = document.querySelector('.validate-bloc')
   modalBody.style.display = 'none';
@@ -176,7 +175,6 @@ function buttonManager() {
   // launch modal event
   const modalBtn = document.querySelectorAll(".modal-btn");
   modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
-
   // launch modal function
   function launchModal() {
     console.log('testOpen');
@@ -186,12 +184,11 @@ function buttonManager() {
   // close modal event
   let btnCloseModal = document.querySelector('.close');
   btnCloseModal.addEventListener('click', closeModal);
-
   //close modal function
   function closeModal() {
     console.log('testClose');
     modalbg.style.display = 'none';
-  }
+  };
 
   // close validate bloc
   let validateCloseBtn = document.querySelector('.validateBtn');
