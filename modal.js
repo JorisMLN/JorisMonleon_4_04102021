@@ -26,35 +26,40 @@ function validateForm() {
   let firstName = document.getElementById('first').value;
   let lastName = document.getElementById('last').value;
   let email = document.getElementById('email').value;
-
+  let errorFirstName = document.getElementById('error-first');
+  let errorLastName = document.getElementById('error-last');
+  let errorEmail = document.getElementById('error-email');
+  let errorBirth = document.getElementById('error-birth');
+  let errorQuantity = document.getElementById('error-quantity');
+  let errorRadio = document.getElementById('error-radio');
+  let errorConditions = document.getElementById('error-conditions');
 
   if (checkName(firstName.length) === false) {
-    let errorFirstName = document.getElementById('error-first');
     errorFirstName.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
 
   } else if (checkName(lastName.length) === false) {
-    let errorLastName = document.getElementById('error-last');
     errorLastName.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
+    errorFirstName.innerHTML = '';
 
   } else if (validateEmail(email) === false) {
-    let errorEmail = document.getElementById('error-email');
     errorEmail.innerHTML = 'L`adresse électronique doit est valide';
+    errorLastName.innerHTML = '';
 
   } else if (checkBirthday() === false) {
-    let errorBirth = document.getElementById('error-birth');
     errorBirth.innerHTML = 'Vous devez entrer votre date de naissance.';
+    errorEmail.innerHTML = '';
 
   } else if (quantity() === false) {
-    let errorQuantity = document.getElementById('error-quantity');
     errorQuantity.innerHTML = 'une valeur numérique doit est saisie';
+    errorBirth.innerHTML = '';
 
   } else if (checkRadio() === false) {
-    let errorRadio = document.getElementById('error-radio');
     errorRadio.innerHTML = 'Vous devez choisir une option.';
+    errorQuantity.innerHTML = '';
 
   } else if (checkConditions() === false) {
-    let errorConditions = document.getElementById('error-conditions');
     errorConditions.innerHTML = 'Vous devez vérifier que vous acceptez les termes et conditions.';
+    errorRadio.innerHTML = '';
 
   } else {
     confirmed();
