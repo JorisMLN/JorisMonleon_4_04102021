@@ -17,23 +17,23 @@ function postRegistration() {
   })
 };
 
+//------------------------
+// error span
+let errorFirstName = document.getElementById('error-first');
+let errorLastName = document.getElementById('error-last');
+let errorEmail = document.getElementById('error-email');
+let errorBirth = document.getElementById('error-birth');
+let errorQuantity = document.getElementById('error-quantity');
+let errorRadio = document.getElementById('error-radio');
+let errorConditions = document.getElementById('error-conditions');
+
 
 //------------------------
 // fonction de validation
 function validateForm() {
-  
   let firstName = document.getElementById('first').value;
   let lastName = document.getElementById('last').value;
   let email = document.getElementById('email').value;
-
-  // error span
-  let errorFirstName = document.getElementById('error-first');
-  let errorLastName = document.getElementById('error-last');
-  let errorEmail = document.getElementById('error-email');
-  let errorBirth = document.getElementById('error-birth');
-  let errorQuantity = document.getElementById('error-quantity');
-  let errorRadio = document.getElementById('error-radio');
-  let errorConditions = document.getElementById('error-conditions');
 
   // vérification des sorties des fonctions 'check'
   if (checkName(firstName.length) === false) {
@@ -48,7 +48,7 @@ function validateForm() {
     errorLastName.innerHTML = '';
 
   } else if (checkBirthday() === false) {
-    errorBirth.innerHTML = 'Vous devez entrer votre date de naissance.';
+    errorBirth.innerHTML = 'Vous devez entrer votre date de naissance (Naturellement, avant la date du jour).';
     errorEmail.innerHTML = '';
 
   } else if (checkQuantity() === false) {
@@ -66,14 +66,6 @@ function validateForm() {
   } else {
     confirmed();
   }
-
-  // console.log('TESTfirstName = ' + checkName(firstName.length));
-  // console.log('TESTlastName = ' + checkName(lastName.length));
-  // console.log('TESTemail = ' + validateEmail(email));
-  // console.log('TESTbirthday = ' + checkBirthday());
-  // console.log('TESTquantity = ' + quantity());
-  // console.log('TESTradio = ' + checkRadio());
-  // console.log('TESTconditions = ' + checkConditions());
 };
 
 
@@ -98,7 +90,13 @@ function validateEmail(email) {
 // check birthday
 function checkBirthday() {
   let birthday = document.getElementById('birthdate').value;
-  if (birthday) {
+  let parsedBirthday = Date.parse(birthday);
+  console.log(parsedBirthday);
+
+  today = Date.now();
+  console.log(today);
+
+  if (parsedBirthday <= today) {
     return true;
   } else {
     return false;
@@ -120,19 +118,6 @@ function checkRadio() {
   let radioBtn = document.getElementsByClassName('radioButton');
   const radioBtnChecked = Array.from(radioBtn).some(({checked}) => checked === true);
   return radioBtnChecked;
-
-  // let radioBtn = document.getElementsByClassName('radioButton');
-  // let checkRadio = 0;
-  // Array.from(radioBtn).forEach((btn) => {
-  //   if (btn.checked == true) {
-  //     checkRadio += 1;
-  //   }
-  // });
-  // if (checkRadio >= 1) {
-  //   return true;
-  // } else {
-  //   return false;
-  // }
 };
 
 //Check conditions
@@ -149,7 +134,7 @@ function checkConditions() {
 function confirmed() {
   console.log('validation réussie !')
   const modalBody = document.querySelector('.modal-body');
-  const validateBloc = document.querySelector('.validate-bloc')
+  const validateBloc = document.querySelector('.validate-bloc');
   modalBody.style.display = 'none';
   validateBloc.style.display = 'flex';
 }
@@ -174,11 +159,30 @@ function buttonManager() {
 
   // launch modal event
   const modalBtn = document.querySelectorAll(".modal-btn");
+  const validateBloc = document.querySelector('.validate-bloc');
+  const modalBody = document.querySelector('.modal-body');
+
   modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
+
   // launch modal function
   function launchModal() {
-    console.log('testOpen');
     modalbg.style.display = 'block';
+    modalBody.style.display = 'block';
+    validateBloc.style.display = 'none';
+
+    document.getElementById('first').value = "";
+    document.getElementById('last').value = "";
+    document.getElementById('email').value = "";
+    document.getElementById('birthdate').value = "";
+    document.getElementById('quantity').value = "";
+
+    errorFirstName.innerHTML = '';
+    errorLastName.innerHTML = '';
+    errorEmail.innerHTML = '';
+    errorBirth.innerHTML = '';
+    errorQuantity.innerHTML = '';
+    errorRadio.innerHTML = '';
+    errorConditions.innerHTML = '';
   };
 
   // close modal event
@@ -198,5 +202,3 @@ function buttonManager() {
     modalbg.style.display = 'none';
   }
 }
-
-
